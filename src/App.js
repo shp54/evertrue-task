@@ -9,8 +9,12 @@ const isGroup = (object) => !!object.containing_object
 const mapStateToProps = (state) => {
 	return {
 		visibleGroup: state.visibleGroup,
-		groups: state.schema.filter(isGroup),
-		generalInfo: state.schema.filter((obj) => !isGroup(obj))  
+		groups: state.schema.filter(isGroup).concat({
+			name: "general_info",
+			containing_object: {
+				properties: state.schema.filter((obj) => !isGroup(obj))
+			}
+		})
 	}
 }
 
@@ -20,15 +24,13 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-const App = ({ visibleGroup, groups, generalInfo, setVisibleGroup }) => {	
-    return (
-      <div className="App">
+const App = ({ visibleGroup, groups, setVisibleGroup }) => (
+	  <div className="App">
 			<div id="sidebar">
 				<Sidebar groups={groups} visibleGroup={visibleGroup} onItemClick={setVisibleGroup} />
-				<Properties groups={groups} visibleGroup={visibleGroup} generalInfo={generalInfo} />
+				<Properties groups={groups} visibleGroup={visibleGroup} />
 			</div>
-      </div>
-    );
-  }
+	  </div>
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
