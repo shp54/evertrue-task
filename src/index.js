@@ -8,11 +8,17 @@ import * as schema from './schema'
 import registerServiceWorker from './registerServiceWorker';
 
 //Create Redux store
-let reducer = (state = { schema }, action) => state
+let reducer = (state, action) => { 
+	if(action.type === 'SET_VISIBLE_GROUP'){
+		return { ...state, visibleGroup: action.group }
+	} else {		
+		return state
+	}
+}
 
-let store = createStore(reducer, { schema }, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+let initialState = { visibleGroup: '', schema: schema }
 
-console.log(store.getState())
+let store = createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
 	<Provider store={store}>

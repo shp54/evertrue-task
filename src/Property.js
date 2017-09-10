@@ -11,18 +11,20 @@ const Property = ({ object }) => {
 	
 	return (
 		<table data-id={id}>
-			<tr>
-				<td>EverTrue Field Name</td>
-				<td>{name}</td>
-			</tr>
-			<tr>
-				<td>Data Type</td>
-				<td>{type}</td>
-			</tr>
-			<tr>
-				<td>Usage</td>
-				<td>{formatAppList(appList)}</td>
-			</tr>	
+			<tbody>
+				<tr>
+					<td>EverTrue Field Name</td>
+					<td>{name}</td>
+				</tr>
+				<tr>
+					<td>Data Type</td>
+					<td>{type}</td>
+				</tr>
+				<tr>
+					<td>Usage</td>
+					<td>{formatAppList(appList)}</td>
+				</tr>	
+			</tbody>
 		</table>
 	)
 }
