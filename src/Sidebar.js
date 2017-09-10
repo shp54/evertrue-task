@@ -7,7 +7,7 @@ const Sidebar = ({visibleGroup, groups, onItemClick}) => (
 	<div id="sidebar">
 		{groups.map((group) => (
 			<span>
-			<p className='category' data-name={group.name} onClick={() => onItemClick(group.name)}>{decamelize(group.name)}</p>
+			<p className='category' key={group.name} onClick={() => onItemClick(group.name)}>{decamelize(group.name)}</p>
 			{ (visibleGroup === group.name) ? getPropsForGroup(groups, visibleGroup).map((name) => (<p>{name}</p>)) : '' }
 			</span>
 		))}
