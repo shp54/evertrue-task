@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import PropertyList from './ItemList.js'
-import { decamelize } from './helpers.js'
+import Sidebar from './Sidebar.js'
+import Properties from './Properties.js'
 
 const isGroup = (object) => !!object.containing_object
 
@@ -21,22 +21,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const App = ({ visibleGroup, groups, generalInfo, setVisibleGroup }) => {	
-	const groupNames = groups.map((group) => group.name).concat("general_info")
-	
     return (
       <div className="App">
 			<div id="sidebar">
-				{groupNames.map((name) => (<p data-name={name} onClick={() => setVisibleGroup(name)}>{decamelize(name)}</p>))}
-			</div>
-			<div id="properties">
-			{ (visibleGroup !== 'general_info') ?
-				 groups.map((group) => 
-					(group.name === visibleGroup)
-						? (<div>{decamelize(group.name)}: <PropertyList items={group.containing_object.properties} /></div>)
-						: ""
-					)
-				: (<div>General Info: <PropertyList items={generalInfo} /></div>)
-			}
+				<Sidebar groups={groups} visibleGroup={visibleGroup} onItemClick={setVisibleGroup} />
+				<Properties groups={groups} visibleGroup={visibleGroup} generalInfo={generalInfo} />
 			</div>
       </div>
     );

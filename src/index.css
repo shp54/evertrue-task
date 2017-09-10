@@ -9,6 +9,15 @@ body {
 	height: 100%
 }
 
+.category {
+	font-weight: bold;
+}
+
+.property-header {
+	font-weight: bold;
+	text-align: left;
+}
+
 #sidebar {
 	float: left;
 	height: 100%
