@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { decamelize } from './helpers.js'
 
 const getPropsForGroup = (groups, visibleGroup) => groups.filter((group) => group.name === visibleGroup)[0].containing_object.properties.map((prop) => decamelize(prop.name))
