@@ -2,7 +2,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%
 }
+
+.App {
+	height: 100%
+}
+
+#sidebar {
+	float: left;
+	height: 100%
+}
+
+#properties {
+	float: right;
+	height: 100%
+}
+
 
 td {
 	border: 1px solid black;
@@ -10,6 +26,7 @@ td {
 }
 
 table {
+	align: left;
     border-collapse: collapse;
 	margin: 10px;
 }
