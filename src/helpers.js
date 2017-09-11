@@ -2,4 +2,4 @@
 
 export const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1)
 
-export const decamelize = (string) => string.split('_').map(capitalize).join(' ')
+export const fieldNameToString = (string) => string.split('_').map(capitalize).join(' ')

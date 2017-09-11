@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import './index.css';
-import App from './App';
+import './css/index.css';
+import App from './components/App';
 import * as schema from './schema'
 import registerServiceWorker from './registerServiceWorker';
 
@@ -19,7 +19,7 @@ let reducer = (state, action) => {
 	}
 }
 
-let initialState = { visibleGroup: '', visibleProperty: '', schema: schema }
+let initialState = { visibleGroup: 'general_info', visibleProperty: '', schema }
 
 let store = createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 

@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+#sidebar {
+	float: left;
+	height: 100%
+}
+
+#properties {
+	float: right;
+	height: 100%
+}
+

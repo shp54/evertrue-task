@@ -1,5 +1,6 @@
 import React from 'react';
-import { capitalize, decamelize } from './helpers.js'
+import '../css/Properties.css'
+import { capitalize, fieldNameToString } from '../helpers.js'
 
 const formatAppList = (appList) => appList.join(", ")
 
@@ -7,11 +8,11 @@ const Property = ({ object }) => {
 	const id = object.id
 	const name = object.name
 	const type = capitalize(object.data_type)
-	const appList = object.app_keys.map(decamelize)
+	const appList = object.app_keys.map(fieldNameToString)
 	
 	return (
 		<div>
-			<h2>{decamelize(name)}</h2>
+			<h2>{fieldNameToString(name)}</h2>
 			<table data-id={id}>
 				<tbody>
 					<tr>

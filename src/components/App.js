@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './App.css';
+import '../css/App.css';
 import Sidebar from './Sidebar.js'
 import Properties from './Properties.js'
 
