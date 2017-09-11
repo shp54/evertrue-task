@@ -6,6 +6,7 @@ body {
 }
 
 .App {
+	float: left;
 	height: 100%
 }
 

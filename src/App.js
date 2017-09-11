@@ -9,6 +9,7 @@ const isGroup = (object) => !!object.containing_object
 const mapStateToProps = (state) => {
 	return {
 		visibleGroup: state.visibleGroup,
+		visibleProperty: state.visibleProperty,
 		groups: state.schema.filter(isGroup).concat({
 			name: "general_info",
 			containing_object: {
@@ -20,16 +21,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return { 
-		setVisibleGroup: (group) => dispatch({type: 'SET_VISIBLE_GROUP', group})
+		setVisibleGroup: (group) => dispatch({type: 'SET_VISIBLE_GROUP', group}),
+		setVisibleProperty: (property) => dispatch({type: 'SET_VISIBLE_PROPERTY', property})
 	}
 }
 
-const App = ({ visibleGroup, groups, setVisibleGroup }) => (
+const App = ({ visibleGroup, visibleProperty, groups, setVisibleGroup, setVisibleProperty }) => (
 	  <div className="App">
-			<div id="sidebar">
-				<Sidebar groups={groups} visibleGroup={visibleGroup} onItemClick={setVisibleGroup} />
-				<Properties groups={groups} visibleGroup={visibleGroup} />
-			</div>
+		<Sidebar groups={groups} visibleGroup={visibleGroup} onItemClick={setVisibleGroup} onPropertyClick={setVisibleProperty} />
+		<Properties groups={groups} visibleGroup={visibleGroup} visibleProperty={visibleProperty} />
 	  </div>
 );
 

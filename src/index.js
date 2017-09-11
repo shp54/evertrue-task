@@ -9,14 +9,17 @@ import registerServiceWorker from './registerServiceWorker';
 
 //Create Redux store
 let reducer = (state, action) => { 
-	if(action.type === 'SET_VISIBLE_GROUP'){
-		return { ...state, visibleGroup: action.group }
-	} else {		
-		return state
+	switch(action.type){
+		case 'SET_VISIBLE_GROUP':
+			return { ...state, visibleGroup: action.group, visibleProperty: '' }
+	    case 'SET_VISIBLE_PROPERTY':
+			return { ...state, visibleProperty: action.property }
+		default:
+			return state
 	}
 }
 
-let initialState = { visibleGroup: '', schema: schema }
+let initialState = { visibleGroup: '', visibleProperty: '', schema: schema }
 
 let store = createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
